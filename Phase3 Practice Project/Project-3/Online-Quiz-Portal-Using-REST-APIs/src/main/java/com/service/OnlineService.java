@@ -12,7 +12,7 @@ import com.bean.UserQuiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.repository.LoginRepository;
+
 import com.repository.QuestionRepository;
 import com.repository.QuizRepository;
 import com.repository.QuizResultRepository;
@@ -22,8 +22,7 @@ import com.repository.UserQuizRepository;
 @Service
 public class OnlineService {
 	
-	@Autowired
-	LoginRepository loginrepo;
+
 	
 	@Autowired
 	QuestionRepository quesrepo;
@@ -37,65 +36,7 @@ public class OnlineService {
 	@Autowired
 	QuizResultRepository quizresultrepo;
 	
-	public String storeParticipants(Login log) {
-		
-			Optional<Login> op = loginrepo.findById(log.getId());
-			if(op.isPresent()) {
-				return "User id must be unique , pls try again";
-			}else {
-					loginrepo.save(log);				// insert new records
-					return "User registered successfully";
-			}
-		}
 	
-	public String loginParticipants(Login log) {
-		
-		Optional<Login> op = loginrepo.findById(log.getId());
-		if(op.isPresent()) {
-			return "Login Successfully";
-		}else {
-								// insert new records
-				return "wrong credentials , try agin!!!";
-		}
-	}
-	
-public String adminlogin(Login log) {
-		
-		Optional<Login> op = loginrepo.findById(log.getId());
-		if(op.isPresent()) {
-			return "Login Successfully";
-		}else {
-							
-				return "wrong credentials , try agin!!!";
-		}
-	}
-
-public String changeAdminPassword(Login log) {
-	Optional<Login> op = loginrepo.findById(log.getId());
-	if(op.isPresent()) {
-			 	Login e	= op.get();
-			 	e.setPassword(log.getPassword());
-			 	loginrepo.saveAndFlush(e);			// update 	existing record update property 
-			 	return "Password changed successfully";
-	}else {
-			
-			return "Password not changed , try again !!!";
-	}
-}
-
-public String changeParticipantsPassword(Login log) {
-	Optional<Login> op = loginrepo.findById(log.getId());
-	if(op.isPresent()) {
-			 	Login e	= op.get();
-			 	e.setPassword(log.getPassword());
-			 	loginrepo.saveAndFlush(e);			// update 	existing record update property 
-			 	return "Password changed successfully";
-	}else {
-			
-			return "Password not changed";
-	}
-}
-
 public String addQuestions(Questions quest) {
 	
 	Optional<Questions> op = quesrepo.findById(quest.getQid());
@@ -106,6 +47,26 @@ public String addQuestions(Questions quest) {
 			return "question added successfully";
 	}
 }
+
+public String updateQuestions(Questions ques) {
+	Optional<Questions> op = quesrepo.findById(ques.getQid());
+	if(op.isPresent()) {
+			 	Questions e	= op.get();
+			 	e.setQuestion(ques.getQuestion());
+			 	e.setOption1(ques.getOption1());
+			 	e.setOption2(ques.getOption2());
+			 	e.setOption3(ques.getOption3());
+			 	e.setOption4(ques.getOption4());
+			 	e.setAnswer(ques.getAnswer());
+			 	quesrepo.saveAndFlush(e);			// update 	existing record update property 
+			 	return "Question and option updated successfully";
+	}else {
+			
+			return "Question and option not updated";
+	}
+}
+
+
 
 
 
