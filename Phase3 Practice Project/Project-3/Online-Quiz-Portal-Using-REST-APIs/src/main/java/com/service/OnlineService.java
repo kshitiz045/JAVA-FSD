@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-import com.bean.Login;
+
 import com.bean.Questions;
 import com.bean.Quiz;
 import com.bean.QuizResult;
@@ -66,6 +66,16 @@ public String updateQuestions(Questions ques) {
 	}
 }
 
+public String deleteQuestions(int qid) {
+	Optional<Questions> op = quesrepo.findById(qid);
+	if(op.isPresent()) {
+					Questions e = op.get();
+					quesrepo.delete(e);
+		return "Question deleted successfully";
+	}else {
+			return "Question not deleted";
+	}
+}
 
 
 

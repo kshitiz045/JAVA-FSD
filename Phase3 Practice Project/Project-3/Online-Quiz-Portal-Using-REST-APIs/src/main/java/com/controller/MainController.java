@@ -46,6 +46,11 @@ public class MainController {
 			return service.updateQuestions(ques);
 		}
 	
+		//http://localhost:8383/admin/deleteQuestion
+		@RequestMapping(value="deleteQuestion/{qid}", method=RequestMethod.DELETE , consumes=MediaType.APPLICATION_JSON_VALUE)
+		public String deleteQuestion(@PathVariable("qid") int qid) {
+			return service.deleteQuestions(qid);
+		}
 	//http://localhost:8383/admin/findQuestionsById
 	@RequestMapping(value="admin/findQuestionsById/{qid}", method=RequestMethod.GET , consumes=MediaType.APPLICATION_JSON_VALUE)
 	public String findQuestions(@PathVariable("qid") int qid) {
