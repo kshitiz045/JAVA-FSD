@@ -1,0 +1,30 @@
+<div class="container mt-5 w-50 bg-light border border-2 rounded">
+        <br/>
+        <span style="color: green;" class="text-center"><h5>{{msg}}</h5></span>
+        <h1 class="text-center ">Add Employee Details</h1>
+    <form class="fs-4" [formGroup]="employeeRef" (ngSubmit)="storeEmployee()">
+        <div class="mb-3">
+          <label class="form-label">Employee Id</label>
+          <input type="number" class="form-control" formControlName = "id">
+        </div>
+        <div class="mb-3"> 
+          <label class="form-label">First Name</label>
+          <input type="text" class="form-control" formControlName = "first_name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName = "last_name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName = "email">
+        </div>
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary me-2" >Submit</button>
+        
+        <button type="submit" class="btn btn-primary " (click)="goBack()">Go Back</button><br/>
+        </div>
+        <br/>
+      </form>
+    
+</div>
