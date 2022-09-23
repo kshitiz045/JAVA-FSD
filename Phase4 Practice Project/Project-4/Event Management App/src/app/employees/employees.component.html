@@ -1,0 +1,33 @@
+
+<br/>
+<br/>
+<br/>
+<div class="container mt-4 ">
+    <button type="button" class="btn btn-primary btn-lg" (click)="addEmployees()">Add Employees</button><br/>
+    
+    <br/>
+
+    <table class="table table-striped table-hover border">
+        <thead>
+        <tr class="h-10">
+            <th scope="col">Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of employee">
+            <td>{{product.id}}</td>
+            <td>{{product.first_name}}</td>
+            <td>{{product.last_name}}</td>
+            <td>{{product.email}}</td>
+            <td><input type="button" value="View Details"  class="btn btn-primary" (click)="viewEmployee(product)"></td>
+        </tr>
+    </tbody>
+
+    </table>
+
+
+</div>
