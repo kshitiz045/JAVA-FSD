@@ -1,0 +1,31 @@
+<div class="container mt-5 mt-5 w-50 border border-dark border-2 rounded">
+    <div class="container mt-2 fs-4">
+    <span style="color: red;">{{msg}}</span><hr>
+    <h3><strong>Details of Employee :- {{  employees.first_name}} </strong></h3>
+    </div>
+    <hr>
+    <div class="text-center mt-1 ">
+        <table class="table ">
+            <tr>
+                <th>Employee Id</th>
+                <th>{{employees.id}}</th>
+            <tr>
+                <th>First Name</th>
+                <th>{{employees.first_name}}</th>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <th>{{employees.last_name}}</th>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <th>{{employees.email}}</th>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    
+    <input type="button" class="bg-success rounded me-2 border-success fs-5" value="Go Back" (click)="goBack()"/>
+    <input type="button" class="mb-2 bg-danger rounded me-2 border-danger fs-5" value="Delete" (click)="deleteEmployee(employees.id)"/>
+    <input type="button" class="mb-2 bg-warning rounded border-warning fs-5" value="Update" (click)="updateEmployee()" />
+</div>
